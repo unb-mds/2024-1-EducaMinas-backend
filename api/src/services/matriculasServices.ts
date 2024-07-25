@@ -20,7 +20,7 @@ export class MatriculasService {
     const data = await this.matriculasRepository.fetch(input);
 
     if (!data || data.length === 0) {
-      throw new Error('No data found for the given input');
+      throw new Error('Nenhum dado foi encontrado para estes filtros.');
     }
 
     const newData: { [key: string]: number[] } = {
