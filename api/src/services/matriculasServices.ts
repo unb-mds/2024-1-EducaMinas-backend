@@ -1,4 +1,4 @@
-import { MatriculasRepository } from "../repositories/matriculasRepository";
+import { MatriculasRepository } from '../repositories/matriculasRepository';
 
 export type MatriculasInput = {
   municipio: string;

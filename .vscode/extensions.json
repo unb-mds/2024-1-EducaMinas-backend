@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "shardulm94.trailing-spaces",
+    "vitest.explorer"
+  ]
+}

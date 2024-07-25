@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node api/src/index.ts"
+    "start": "ts-node api/src/index.ts",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,12 @@
     "@types/node": "^20.14.11",
     "express": "^4.19.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5"
+  },
+  "devDependencies": {
+    "@bitgrow/eslint-config": "^1.0.8",
+    "eslint": "^8.57.0",
+    "vitest": "^1.6.0"
+
   }
 }
