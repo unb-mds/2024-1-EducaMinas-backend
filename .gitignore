@@ -1,1 +1,10 @@
 node_modules
+
+# testing
+/coverage
+
+/build
+
+/dist
+
+.env

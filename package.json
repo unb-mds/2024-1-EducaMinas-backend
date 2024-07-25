@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node api/src/index.ts",
-    "lint": "eslint ."
+    "build": "tsc",
+    "lint": "eslint .",
+    "test": "vitest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -19,8 +21,8 @@
   },
   "devDependencies": {
     "@bitgrow/eslint-config": "^1.0.8",
+    "@vitest/coverage-v8": "^2.0.4",
     "eslint": "^8.57.0",
-    "vitest": "^1.6.0"
-
+    "vitest": "^2.0.4"
   }
 }
