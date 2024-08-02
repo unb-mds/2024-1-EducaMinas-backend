@@ -18,11 +18,15 @@
     "@types/node": "^20.14.11",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5"
   },
   "devDependencies": {
     "@bitgrow/eslint-config": "^1.0.8",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.6",
     "@vitest/coverage-v8": "^2.0.4",
     "eslint": "^8.57.0",
     "vitest": "^2.0.4"
