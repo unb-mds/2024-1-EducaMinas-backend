@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
-import express from 'express';
 import { config } from 'dotenv';
+import express from 'express';
 import enrollmentRoute from './routes/enrollmentRoute';
 import indicatorRoute from './routes/indicatorRoute';
 import rankingRoute from './routes/rankingRoute';

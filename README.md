@@ -1,6 +1,5 @@
 # 2024-1-Squad05
 
-
 ## Equipe
 
 <center>
