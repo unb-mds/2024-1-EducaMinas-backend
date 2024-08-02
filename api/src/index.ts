@@ -1,13 +1,19 @@
 import { createClient } from '@supabase/supabase-js';
-import express from 'express';
 import { config } from 'dotenv';
+import express from 'express';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 import enrollmentRoute from './routes/enrollmentRoute';
 import indicatorRoute from './routes/indicatorRoute';
 import rankingRoute from './routes/rankingRoute';
+import { options } from './swaggerConfig';
 
 config();
 
 const app = express();
+const swaggerSpec = swaggerJsdoc(options);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 const supabaseUrl = process.env.SUPABASE_URL as string;
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY as string;
