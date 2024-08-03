@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { config } from 'dotenv';
-import express from 'express';
+import express, { Request, Response } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import enrollmentRoute from './routes/enrollmentRoute';
@@ -12,6 +12,10 @@ config();
 
 const app = express();
 const swaggerSpec = swaggerJsdoc(options);
+
+app.get('/', (req: Request, res: Response) => {
+  res.json('Bem vindo!');
+});
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
