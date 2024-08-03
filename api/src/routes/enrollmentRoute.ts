@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { EnrollmentControler } from '../controllers/enrollmentController';
+import { EnrollmentController } from '../controllers/enrollmentController';
 
 const router = Router();
 
@@ -47,6 +47,6 @@ const router = Router();
  *                     type: string
  */
 
-router.get('/api/matriculas', EnrollmentControler);
+router.get('/api/matriculas', EnrollmentController);
 
 export default router;
