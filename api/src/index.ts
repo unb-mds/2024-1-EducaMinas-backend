@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import cors from 'cors';
 import { config } from 'dotenv';
 import express, { Request, Response } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
@@ -12,6 +13,11 @@ config();
 
 const app = express();
 const swaggerSpec = swaggerJsdoc(options);
+app.use(
+  cors({
+    origin: '*',
+  }),
+);
 
 app.get('/', (req: Request, res: Response) => {
   res.json('Bem vindo!');

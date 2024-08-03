@@ -9,8 +9,8 @@ const swaggerDefinition: SwaggerDefinition = {
   },
   servers: [
     {
-      url: 'http://localhost:3000',
-      description: 'Servidor local',
+      url: 'https://2024-1-educa-minas-backend.vercel.app',
+      description: 'Ambiente de produção',
     },
   ],
 };
