@@ -2,11 +2,11 @@ import { Request, Response } from 'express';
 
 export const EnrollmentController = async (req: Request, res: Response) => {
   const { municipio, etapa } = req.query;
-  console.log(`Município: ${municipio} - Etapa: ${etapa}`);
+  console.log(` Matriculas: Município: ${municipio} - Etapa: ${etapa}`);
   const response = {
     series: [
-      { name: 'pretos', data: [7, 14, 21, 28, 35, 42, 49, 56] },
-      { name: 'brancos', data: [10, 20, 30, 40, 50, 60, 70, 80] },
+      { name: 'pretos', data: [7, 1, 21, 28, 3, 420, 12, 56] },
+      { name: 'brancos', data: [10, 20, 500, 40, 50, 60, 70, 100] },
     ],
     categories: [
       '2020 Pública',
