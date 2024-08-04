@@ -1,12 +1,13 @@
-name: Node.js API CI
+name: Node.js API Quality
 
 on:
   pull_request:
     branches:
       - develop
+      - main
 
 jobs:
-  CI-Node-API:
+  Quality-API:
     runs-on: ubuntu-latest
 
     steps:
