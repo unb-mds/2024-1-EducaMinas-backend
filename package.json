@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "nodemon --exec ts-node api/src/index.ts",
     "build": "tsc",
     "lint": "eslint .",
     "test": "vitest --coverage"
