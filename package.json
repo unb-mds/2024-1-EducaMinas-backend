@@ -7,8 +7,14 @@
     "start": "nodemon --exec ts-node api/src/index.ts",
     "build": "tsc",
     "lint": "eslint .",
-    "test": "vitest --coverage"
+    "test": "vitest --coverage",
+    "test:ci": "vitest run --silent --passWithNoTests"
+
   },
+  "pre-commit": [
+    "test:ci",
+    "lint"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -19,6 +25,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "pre-commit": "^1.2.2",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "ts-node": "^10.9.2",
