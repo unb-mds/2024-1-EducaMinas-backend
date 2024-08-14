@@ -20,7 +20,9 @@ app.use(
 );
 
 app.get('/', (req: Request, res: Response) => {
-  res.json('Bem vindo!');
+  res.json(
+    'Bem vindo à API pública do EducaMinas! Acesse /api/matriculas, /api/indicador ou /api/ranking para obter os dados.',
+  );
 });
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
