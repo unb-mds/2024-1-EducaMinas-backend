@@ -11,11 +11,23 @@ export const IndicatorController = async (req: Request, res: Response) => {
     series: [
       {
         name: 'Brancos',
-        data: [12, 34, 14, 29, 45],
+        data: [
+          Math.floor(Math.random() * 10001),
+          Math.floor(Math.random() * 10001),
+          Math.floor(Math.random() * 10001),
+          Math.floor(Math.random() * 10001),
+          Math.floor(Math.random() * 10001),
+        ],
       },
       {
-        name: 'Pretos',
-        data: [20, 22, 23, 19, 30],
+        name: 'Pretos/Pardos',
+        data: [
+          Math.floor(Math.random() * 10001),
+          Math.floor(Math.random() * 10001),
+          Math.floor(Math.random() * 10001),
+          Math.floor(Math.random() * 10001),
+          Math.floor(Math.random() * 10001),
+        ],
       },
     ],
   };
