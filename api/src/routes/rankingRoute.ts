@@ -21,12 +21,6 @@ const router = Router();
  *           type: string
  *         required: true
  *         description: Etapa de ensino
- *       - in: query
- *         name: ordem
- *         schema:
- *           type: string
- *         required: true
- *         description: Ordem do ranking
  *     responses:
  *       200:
  *         description: Ranking de municípios
