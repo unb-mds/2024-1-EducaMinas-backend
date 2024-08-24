@@ -7,10 +7,10 @@ export const EnrollmentController = async (req: Request, res: Response) => {
     const { municipio, etapa } = req.query;
 
     if (typeof municipio !== 'string' || typeof etapa !== 'string') {
-      return res.status(400).json({ message: 'Parâmetros inválidos.' });
+      return res.status(400).json({ message: 'Município ou Etapa inválidos.' });
     }
     if (!municipio || !etapa) {
-      return res.status(400).json({ error: 'Municipio e etapa são obrigatórios' });
+      return res.status(400).json({ message: 'Municipio e Etapa são obrigatórios.' });
     }
 
     const service = new MatriculasService(new MatriculasRepositoryPSQL());
