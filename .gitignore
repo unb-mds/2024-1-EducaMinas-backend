@@ -1,0 +1,6 @@
+WebScrapper/oracle_data/*
+WebScrapper/indicators_data/*
+WebScrapper/test_supabase
+WebScrapper/DataLoader/.env
+WebScrapper/Selenium.ipynb
+WebScrapper/BeautifulSoup.py
