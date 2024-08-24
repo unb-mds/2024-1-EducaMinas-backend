@@ -6,3 +6,4 @@ WebScrapper/Selenium.ipynb
 WebScrapper/BeautifulSoup.py
 WebScrapper/DataLoader/__pycache__/*
 WebScrapper/DataExtractor/__pycache__/*
+WebScrapper/test_supabase.py
