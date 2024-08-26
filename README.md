@@ -1,6 +1,6 @@
 # 2024-1-Squad05
 
-
+[![codecov](https://codecov.io/gh/unb-mds/2024-1-EducaMinas-backend/graph/badge.svg?token=RL1Q0kz1Ay)](https://codecov.io/gh/unb-mds/2024-1-EducaMinas-backend)
 ## Equipe
 
 <center>
