@@ -42,10 +42,6 @@ export class MatriculasService {
     });
 
     data.forEach((entry) => {
-      if (entry.etapa !== input.etapa || entry.municipio.toString() !== input.municipio) {
-        throw new Error('Erro ao processar solicitação.');
-      }
-
       if (
         entry.rede === 'Municipal' ||
         entry.rede === 'Estadual' ||
