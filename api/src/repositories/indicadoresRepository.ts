@@ -2,11 +2,11 @@ import { IndicadoresInput } from '../services/indicadoresServices';
 
 export type IndicadoresRepositoryOutput = {
   ano: number;
-  indicador: string;
-  raca: string;
   rede: string;
   etapa: string;
-  valor: number;
+  taxa_de_aprovacao: number;
+  taxa_de_reprovacao: number;
+  taxa_de_abandono: number;
   municipio: string;
 };
 

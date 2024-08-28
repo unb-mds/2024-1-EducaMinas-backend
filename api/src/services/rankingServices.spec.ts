@@ -27,20 +27,7 @@ describe('Ranking Service', () => {
   test('should return data length with success', async () => {
     const output = await rankingService.execute(input);
     expect(output).toHaveLength(3);
-    console.log(output);
   });
-
-  // test('should return data with another filter with success', async () => {
-  //   const output = await rankingService.execute({
-  //     ...input,
-  //     etapa: 'EM',
-  //     ano: 2020,
-  //   });
-  //   expect(output[0].name).toEqual('Belo Horizonte');
-  //   expect(output[0].value).toEqual(4);
-  //   expect(output[1].name).toEqual('Patos de Minas');
-  //   expect(output[1].value).toEqual(1);
-  // });
 
   test('should return an Error when no register exists with ano filter', async () => {
     const incorrectAnoInput = { ...input, ano: 2024 };
