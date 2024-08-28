@@ -4,11 +4,10 @@ import { RankingInput } from '../services/rankingServices';
 export type RankingRepositoryOutput = {
   ano: number;
   raca: string;
+  rede: string;
   etapa: string;
+  matricula: number;
   municipio: string;
-  reprovacao: number;
-  evasao: number;
-  atraso: number;
 };
 
 export abstract class RankingRepository {
