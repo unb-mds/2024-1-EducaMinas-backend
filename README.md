@@ -8,7 +8,7 @@
 ---
 
 <div align="center">
-    <img src="https://github.com/unb-mds/2024-1-EducaMinas-frontend/blob/develop/docs/docs/assets/logo.png?raw=true" style="width:30vw"/>
+    <img src="https://github.com/unb-mds/2024-1-EducaMinas-frontend/blob/develop/docs/docs/assets/logo.png?raw=true" style="width:200px"/>
 </div>
 
 
