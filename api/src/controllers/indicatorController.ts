@@ -1,35 +1,32 @@
 import { Request, Response } from 'express';
+import { IndicadoresRepositoryPSQL } from '../database/psql/indicadoresRepositoryPSQL';
+import { IndicadoresService } from '../services/indicadoresServices';
 
 export const IndicatorController = async (req: Request, res: Response) => {
-  const { municipio, etapa, indicador, rede } = req.query;
-  console.log(
-    `Indicador Município: ${municipio} - Etapa: ${etapa} - Indicador: ${indicador} - Rede: ${rede}`,
-  );
+  try {
+    const { indicador, etapa, municipio } = req.query;
 
-  const response = {
-    categories: [2019, 2020, 2021, 2022, 2023],
-    series: [
-      {
-        name: 'Brancos',
-        data: [
-          Math.floor(Math.random() * 10001),
-          Math.floor(Math.random() * 10001),
-          Math.floor(Math.random() * 10001),
-          Math.floor(Math.random() * 10001),
-          Math.floor(Math.random() * 10001),
-        ],
-      },
-      {
-        name: 'Pretos/Pardos',
-        data: [
-          Math.floor(Math.random() * 10001),
-          Math.floor(Math.random() * 10001),
-          Math.floor(Math.random() * 10001),
-          Math.floor(Math.random() * 10001),
-          Math.floor(Math.random() * 10001),
-        ],
-      },
-    ],
-  };
-  res.json(response);
+    if (
+      typeof indicador !== 'string' ||
+      typeof etapa !== 'string' ||
+      typeof municipio !== 'string'
+    ) {
+      return res
+        .status(400)
+        .json({ message: 'Indicador, Etapa ou Município inválidos.' });
+    }
+    if (!indicador || !etapa || !municipio) {
+      return res
+        .status(400)
+        .json({ message: 'Indicador, Etapa e Município são obrigatórios.' });
+    }
+
+    const service = new IndicadoresService(new IndicadoresRepositoryPSQL());
+    const result = await service.execute({ indicador, etapa, municipio });
+
+    res.json(result);
+  } catch (error) {
+    console.error('Erro ao processar a solicitação:', error);
+    res.status(400).json({ message: (error as any).message });
+  }
 };
