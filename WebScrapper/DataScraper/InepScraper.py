@@ -53,7 +53,7 @@ def tryFind(function, interval: float = 0.2):
         except InvalidSelectorException:
             print(f"Invalid Selector: Xpath invalid {tentativa}...")
             time.sleep(interval)
-        except:
+        except Exception:
             print(f"Trying again generic problem {tentativa}...")
             time.sleep(interval)
         #    print("Erro Inesperado!!!")
