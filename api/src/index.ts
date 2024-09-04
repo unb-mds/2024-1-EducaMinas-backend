@@ -4,9 +4,9 @@ import { config } from 'dotenv';
 import express, { Request, Response } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import enrollmentRoute from './routes/enrollmentRoute';
-import indicatorRoute from './routes/indicatorRoute';
-import rankingRoute from './routes/rankingRoute';
+import enrollmentRoute from './infrastructure/routes/enrollmentRoute';
+import indicatorRoute from './infrastructure/routes/indicatorRoute';
+import rankingRoute from './infrastructure/routes/rankingRoute';
 import { options } from './swaggerConfig';
 
 config();

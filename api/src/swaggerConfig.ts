@@ -17,5 +17,5 @@ const swaggerDefinition: SwaggerDefinition = {
 
 export const options = {
   swaggerDefinition,
-  apis: ['./api/src/routes/*.ts'],
+  apis: ['./api/src/infrastructure/routes/*.ts'],
 };
