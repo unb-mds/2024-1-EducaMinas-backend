@@ -9,7 +9,8 @@ source_path = os.path.abspath(os.path.join(script_dir, "../oracle_data"))
 all_indicators_file_path = [
     os.path.join(source_path, i) for i in os.listdir(source_path)]
 
-env = dotenv_values("./.env")
+env_path = os.path.join(os.path.dirname(__file__), '.env')
+env = dotenv_values(env_path)
 host = env.get("DATABASE_HOST")
 port = env.get("DATABASE_PORT")
 dbname = env.get("DATABASE_NAME")
@@ -21,7 +22,7 @@ for file_name_path in all_indicators_file_path:
     config = Config(
         extractor_type="IndicadorExcelExtractor",
         loader_type="DerivedFromFilterToPostgresLoader",
-        transformers=["StandardizeMunicipioDataTransformer"],
+        transformers=["StandardizeMatriculaDataTransformer"],
         extractor={
             "file_name_path": file_name_path
         },
