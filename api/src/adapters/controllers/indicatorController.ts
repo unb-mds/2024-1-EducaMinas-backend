@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { IndicadoresRepositoryPSQL } from '../database/psql/indicadoresRepositoryPSQL';
-import { IndicadoresService } from '../services/indicadoresServices';
+import { IndicatorService } from '../../application/services/indicatorServices';
+import { IndicatorRepositoryPSQL } from '../../infrastructure/database/psql/indicatorRepositoryPSQL';
 
 export const IndicatorController = async (req: Request, res: Response) => {
   try {
@@ -21,7 +21,7 @@ export const IndicatorController = async (req: Request, res: Response) => {
         .json({ message: 'Indicador, Etapa e Município são obrigatórios.' });
     }
 
-    const service = new IndicadoresService(new IndicadoresRepositoryPSQL());
+    const service = new IndicatorService(new IndicatorRepositoryPSQL());
     const result = await service.execute({ indicador, etapa, municipio });
 
     res.json(result);

@@ -1,4 +1,4 @@
-export const rankingData = [
+export const genericData = [
   {
     ano: 2020,
     raca: 'Branca',

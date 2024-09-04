@@ -1,12 +1,12 @@
-import { supabase } from '../..';
+import { supabase } from '../../..';
 import {
-  MatriculasRepository,
-  MatriculasRepositoryOutput,
-} from '../../repositories/matriculasRepository';
-import { MatriculasInput } from '../../services/matriculasServices';
+  EnrollmentRepository,
+  EnrollmentRepositoryOutput,
+} from '../../../adapters/repositories/enrollmentRepository';
+import { EnrollmentInput } from '../../../application/services/enrollmentServices';
 
-export class MatriculasRepositoryPSQL extends MatriculasRepository {
-  async fetch(input: MatriculasInput): Promise<MatriculasRepositoryOutput[]> {
+export class EnrollmentRepositoryPSQL extends EnrollmentRepository {
+  async fetch(input: EnrollmentInput): Promise<EnrollmentRepositoryOutput[]> {
     const { data, error } = await supabase
       .from('Filtro')
       .select(
@@ -18,14 +18,13 @@ export class MatriculasRepositoryPSQL extends MatriculasRepository {
       Matricula( id, cor_raca, quantidade, dependencia_administrativa)
       `,
       )
-      .eq('municipio_id', Number(input.municipio)) // Filtrando por município
-      .eq('etapa_de_ensino', input.etapa) // Filtrando por etapa de ensino
+      .eq('municipio_id', Number(input.municipio))
+      .eq('etapa_de_ensino', input.etapa)
       .gt('ano', 2019);
     if (error) {
       throw new Error(error.message);
     } else {
-      // Processar e retornar os dados no formato esperado
-      const result: MatriculasRepositoryOutput[] = data
+      const result: EnrollmentRepositoryOutput[] = data
         .map((filtro: any) => {
           return filtro.Matricula.map((mr: any) => ({
             ano: filtro.ano,

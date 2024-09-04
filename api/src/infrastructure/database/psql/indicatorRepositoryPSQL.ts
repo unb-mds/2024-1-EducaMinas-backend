@@ -1,12 +1,12 @@
-import { supabase } from '../..';
+import { supabase } from '../../..';
 import {
-  IndicadoresRepository,
-  IndicadoresRepositoryOutput,
-} from '../../repositories/indicadoresRepository';
-import { IndicadoresInput } from '../../services/indicadoresServices';
+  IndicatorRepository,
+  IndicatorRepositoryOutput,
+} from '../../../adapters/repositories/indicatorRepository';
+import { IndicatorInput } from '../../../application/services/indicatorServices';
 
-export class IndicadoresRepositoryPSQL extends IndicadoresRepository {
-  async fetch(input: IndicadoresInput): Promise<IndicadoresRepositoryOutput[]> {
+export class IndicatorRepositoryPSQL extends IndicatorRepository {
+  async fetch(input: IndicatorInput): Promise<IndicatorRepositoryOutput[]> {
     const { data, error } = await supabase
       .from('Filtro')
       .select(
@@ -19,12 +19,11 @@ export class IndicadoresRepositoryPSQL extends IndicadoresRepository {
       `,
       )
       .eq('municipio_id', Number(input.municipio))
-      .eq('etapa_de_ensino', input.etapa); // Filtrando por município
+      .eq('etapa_de_ensino', input.etapa);
     if (error) {
       throw new Error(error.message);
     } else {
-      // Processar e retornar os dados no formato esperado
-      const result: IndicadoresRepositoryOutput[] = data
+      const result: IndicatorRepositoryOutput[] = data
         .map((filtro: any) => {
           return filtro.Indicador.map((mr: any) => ({
             ano: filtro.ano,
