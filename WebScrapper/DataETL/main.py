@@ -5,8 +5,7 @@ def run_scripts():
     scripts = [
         'ETLMunicipioJSON.py',
         'ETLMunicipioPostgres.py',
-        'ETLIndicadorPostgres.py',
-        'ETLMatriculaPostgres.py'
+        'ETLIndicadorPostgres.py'
     ]
 
     for script in scripts:
