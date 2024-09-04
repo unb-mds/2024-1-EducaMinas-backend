@@ -2,7 +2,7 @@ import json
 import pandas as pd
 from abc import ABC, abstractmethod
 from .connect import PostgreSQLConnector
-from .metadata import Filtro, Matricula, Indicador
+from models import Filtro, Matricula, Indicador
 from sqlalchemy.orm import Session
 
 
@@ -63,6 +63,7 @@ class MunicipioToPostgresLoader(LoadService):
 class DerivedFromFilterToPostgresLoader(LoadService):
     def __init__(self, connection_details):
         self.connector = PostgreSQLConnector(**connection_details)
+        self.connector.connect()
 
     def load(self, df: pd.DataFrame):
         try:
@@ -72,7 +73,7 @@ class DerivedFromFilterToPostgresLoader(LoadService):
 
     def __get_DB_existing_filters(self):
         # Obtém todos os filtros existentes no banco de dados
-        with Session(self.connector.connection) as session:
+        with Session(self.connector.get_connection()) as session:
             existing_filtros = session.query(Filtro).all()
         # Converte em um dicionário para acesso rápido
         filter_dict = {(f.municipio_id, f.etapa_de_ensino, f.ano):
@@ -113,11 +114,8 @@ class DerivedFromFilterToPostgresLoader(LoadService):
         raise ValueError("The pattern must follow the skeleton")
 
     def __bulk_insert_data(self, full_table_data: pd.DataFrame, current_file: str = None):
-        # Verifica o progresso do checkpoint
-        """ if current_file:
-            save_checkpoint(current_file) """
         self.__filter_dict = self.__get_DB_existing_filters()
-        with Session(self.connector) as session:
+        with Session(self.connector.get_connection()) as session:
             table_objs = []
 
             # Processar cada linha do DataFrame
@@ -132,5 +130,3 @@ class DerivedFromFilterToPostgresLoader(LoadService):
             # Inserir em lote
             session.bulk_save_objects(table_objs)
             session.commit()
-        """if current_file:
-            os.remove(CHECKPOINT_FILE)"""
