@@ -1,6 +1,6 @@
 from abc import ABC
 from sqlalchemy import create_engine
-from .metadata import *  # noqa: F403
+from models.base import Base
 
 
 class ConnectorService(ABC):
@@ -22,7 +22,10 @@ class PostgreSQLConnector(ConnectorService):
                 f"postgresql+psycopg2://{self.user}:{self.password}@{self.host}:{self.port}/{self.database}", echo=True)
             print("Connected to PostgreSQL via SQLAlchemy")
             # Configuração do banco de dados
-            create_metadata(self.connection)  # noqa: F405
+            Base.metadata.create_all(self.connection)  # noqa: F405
             return self.connection
         except Exception as e:
             print("Error connecting to PostgreSQL: %s", e)
+
+    def get_connection(self):
+        return self.connection
