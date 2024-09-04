@@ -1,4 +1,4 @@
-import { RankingRepository } from '../repositories/rankingRepository';
+import { RankingRepository } from '../../adapters/repositories/rankingRepository';
 
 export type RankingInput = {
   ano: number;
@@ -6,8 +6,8 @@ export type RankingInput = {
 };
 
 type Output = {
-  name: string; // Nome do município
-  value: number; // Módulo da diferença percentual entre rede pública e privada
+  name: string;
+  value: number;
 }[];
 
 export class RankingService {
@@ -66,7 +66,6 @@ export class RankingService {
         const totalPrivada =
           newData[municipio].pretoPrivada + newData[municipio].brancoPrivada;
 
-        // Exclui o município se qualquer um dos valores totais for inferior a 10
         if (totalPublica < 10 || totalPrivada < 10) {
           delete newData[municipio];
           return null;
@@ -85,7 +84,7 @@ export class RankingService {
           value: parseFloat(diferencaPorcentagem.toFixed(2)),
         };
       })
-      .filter((item) => item !== null); // Filtra os municípios que foram excluídos
+      .filter((item) => item !== null);
 
     return response;
   }

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { RankingRepositoryPSQL } from '../database/psql/rankingRepositoryPSQL';
-import { RankingService } from '../services/rankingServices';
+import { RankingRepositoryPSQL } from '../../infrastructure/database/psql/rankingRepositoryPSQL';
+import { RankingService } from '../../application/services/rankingServices';
 
 export const RankingController = async (req: Request, res: Response) => {
   try {

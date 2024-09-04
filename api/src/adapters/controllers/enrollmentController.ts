@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { MatriculasRepositoryPSQL } from '../database/psql/matriculasRepositoryPSQL';
-import { MatriculasService } from '../services/matriculasServices';
+import { EnrollmentService } from '../../application/services/enrollmentServices';
+import { EnrollmentRepositoryPSQL } from '../../infrastructure/database/psql/enrollmentRepositoryPSQL';
 
 export const EnrollmentController = async (req: Request, res: Response) => {
   try {
@@ -13,7 +13,7 @@ export const EnrollmentController = async (req: Request, res: Response) => {
       return res.status(400).json({ message: 'Municipio e Etapa são obrigatórios.' });
     }
 
-    const service = new MatriculasService(new MatriculasRepositoryPSQL());
+    const service = new EnrollmentService(new EnrollmentRepositoryPSQL());
     const result = await service.execute({ municipio, etapa });
 
     res.json(result);

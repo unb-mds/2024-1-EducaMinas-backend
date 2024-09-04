@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test } from 'vitest';
-import { rankingData } from '../database/memory/data/rankingMemoryData';
-import { RankingRepositoryMemory } from '../database/memory/rankingRepositoryMemory';
+import { genericData } from '../../infrastructure/database/memory/data/rankingMemoryData';
+import { RankingRepositoryMemory } from '../../infrastructure/database/memory/rankingRepositoryMemory';
 import { RankingInput, RankingService } from './rankingServices';
 
 describe('Ranking Service', () => {
@@ -10,7 +10,7 @@ describe('Ranking Service', () => {
   beforeEach(() => {
     rankingRepository = new RankingRepositoryMemory();
     rankingService = new RankingService(rankingRepository);
-    rankingRepository.DATA_IN_MEMORY = rankingData; // Reset data before each test
+    rankingRepository.DATA_IN_MEMORY = genericData;
   });
 
   const input: RankingInput = {

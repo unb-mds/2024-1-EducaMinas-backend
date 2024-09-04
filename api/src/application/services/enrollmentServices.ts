@@ -1,6 +1,6 @@
-import { MatriculasRepository } from '../repositories/matriculasRepository';
+import { EnrollmentRepository } from '../../adapters/repositories/enrollmentRepository';
 
-export type MatriculasInput = {
+export type EnrollmentInput = {
   municipio: string;
   etapa: string;
 };
@@ -13,11 +13,11 @@ type Output = {
   categories: string[];
 };
 
-export class MatriculasService {
-  constructor(private matriculasRepository: MatriculasRepository) {}
+export class EnrollmentService {
+  constructor(private enrollmentRepository: EnrollmentRepository) {}
 
-  async execute(input: MatriculasInput): Promise<Output> {
-    const data = await this.matriculasRepository.fetch(input);
+  async execute(input: EnrollmentInput): Promise<Output> {
+    const data = await this.enrollmentRepository.fetch(input);
 
     if (!data || data.length === 0) {
       throw new Error('Nenhum dado foi encontrado para estes filtros.');
@@ -58,15 +58,6 @@ export class MatriculasService {
         newData.Brancos[index] += entry.matricula;
       }
     });
-
-    // REMOVE CATEGORIAS VAZIAS
-    // for (let i = categories.length - 1; i >= 0; i--) {
-    //   if (newData['Pretos/Pardos'][i] <= 0 && newData.Brancos[i] <= 0) {
-    //     newData['Pretos/Pardos'].splice(i, 1);
-    //     newData.Brancos.splice(i, 1);
-    //     categories.splice(i, 1);
-    //   }
-    // }
 
     const series = Object.entries(newData).map(([name, data]) => ({
       name,

@@ -7,7 +7,7 @@ export default defineConfig({
       interopDefault: true,
     },
     coverage: {
-      include: ['api/src/services'],
+      include: ['api/src/application/services'],
       provider: 'v8',
     },
   },

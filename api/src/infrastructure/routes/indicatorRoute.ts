@@ -1,14 +1,14 @@
 import { Router } from 'express';
-import { EnrollmentController } from '../controllers/enrollmentController';
+import { IndicatorController } from '../../adapters/controllers/indicatorController';
 
 const router = Router();
 
 /**
  * @swagger
- * /api/matriculas:
+ * /api/indicador:
  *   get:
- *     summary: Retorna dados de matrículas
- *     description: Retorna dados de matrículas por município e etapa
+ *     summary: Busca dados de indicadores
+ *     description: Retorna dados de indicadores por município, etapa, indicador e rede.
  *     parameters:
  *       - in: query
  *         name: municipio
@@ -21,15 +21,31 @@ const router = Router();
  *         schema:
  *           type: string
  *         required: true
- *         description: Etapa da educação
+ *         description: Etapa de ensino
+ *       - in: query
+ *         name: indicador
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Nome do indicador
+ *       - in: query
+ *         name: rede
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Tipo de rede (pública/privada)
  *     responses:
  *       200:
- *         description: Sucesso
+ *         description: Dados de indicadores
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
+ *                 categories:
+ *                   type: array
+ *                   items:
+ *                     type: number
  *                 series:
  *                   type: array
  *                   items:
@@ -41,12 +57,8 @@ const router = Router();
  *                         type: array
  *                         items:
  *                           type: number
- *                 categories:
- *                   type: array
- *                   items:
- *                     type: string
  */
 
-router.get('/api/matriculas', EnrollmentController);
+router.get('/api/indicador', IndicatorController);
 
 export default router;

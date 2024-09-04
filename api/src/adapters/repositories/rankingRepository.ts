@@ -1,6 +1,5 @@
-import { RankingInput } from '../services/rankingServices';
+import { RankingInput } from '../../application/services/rankingServices';
 
-// output vindo do banco de dados
 export type RankingRepositoryOutput = {
   ano: number;
   raca: string;

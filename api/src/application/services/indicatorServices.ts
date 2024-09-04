@@ -1,6 +1,6 @@
-import { IndicadoresRepository } from '../repositories/indicadoresRepository';
+import { IndicatorRepository } from '../../adapters/repositories/indicatorRepository';
 
-export type IndicadoresInput = {
+export type IndicatorInput = {
   indicador: string;
   etapa: string;
   municipio: string;
@@ -14,11 +14,11 @@ type Output = {
   }[];
 };
 
-export class IndicadoresService {
-  constructor(private indicadoresRepository: IndicadoresRepository) {}
+export class IndicatorService {
+  constructor(private indicatorRepository: IndicatorRepository) {}
 
-  async execute(input: IndicadoresInput): Promise<Output> {
-    const data = await this.indicadoresRepository.fetch(input);
+  async execute(input: IndicatorInput): Promise<Output> {
+    const data = await this.indicatorRepository.fetch(input);
 
     if (!data || data.length === 0) {
       throw new Error('Nenhum dado foi encontrado para estes filtros.');
@@ -30,17 +30,14 @@ export class IndicadoresService {
     };
     const categories: number[] = [];
 
-    // Definindo os anos esperados
     const anos = [2020, 2021, 2022, 2023];
 
-    // Criando combinações de ano
     anos.forEach((ano) => {
       categories.push(ano);
       newData.Pública.push(0);
       newData.Privada.push(0);
     });
 
-    // Atualizando dados de indicadores
     data.forEach((entry: { [key: string]: any }) => {
       const index = categories.indexOf(entry.ano);
 

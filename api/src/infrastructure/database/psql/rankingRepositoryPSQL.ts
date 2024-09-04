@@ -1,9 +1,9 @@
-import { supabase } from '../..';
+import { supabase } from '../../..';
 import {
   RankingRepository,
   RankingRepositoryOutput,
-} from '../../repositories/rankingRepository';
-import { RankingInput } from '../../services/rankingServices';
+} from '../../../adapters/repositories/rankingRepository';
+import { RankingInput } from '../../../application/services/rankingServices';
 
 export class RankingRepositoryPSQL extends RankingRepository {
   async fetch(input: RankingInput): Promise<RankingRepositoryOutput[]> {

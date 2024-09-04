@@ -1,14 +1,14 @@
 import { Router } from 'express';
-import { IndicatorController } from '../controllers/indicatorController';
+import { EnrollmentController } from '../../adapters/controllers/enrollmentController';
 
 const router = Router();
 
 /**
  * @swagger
- * /api/indicador:
+ * /api/matriculas:
  *   get:
- *     summary: Busca dados de indicadores
- *     description: Retorna dados de indicadores por município, etapa, indicador e rede.
+ *     summary: Retorna dados de matrículas
+ *     description: Retorna dados de matrículas por município e etapa
  *     parameters:
  *       - in: query
  *         name: municipio
@@ -21,31 +21,15 @@ const router = Router();
  *         schema:
  *           type: string
  *         required: true
- *         description: Etapa de ensino
- *       - in: query
- *         name: indicador
- *         schema:
- *           type: string
- *         required: true
- *         description: Nome do indicador
- *       - in: query
- *         name: rede
- *         schema:
- *           type: string
- *         required: true
- *         description: Tipo de rede (pública/privada)
+ *         description: Etapa da educação
  *     responses:
  *       200:
- *         description: Dados de indicadores
+ *         description: Sucesso
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 categories:
- *                   type: array
- *                   items:
- *                     type: number
  *                 series:
  *                   type: array
  *                   items:
@@ -57,8 +41,12 @@ const router = Router();
  *                         type: array
  *                         items:
  *                           type: number
+ *                 categories:
+ *                   type: array
+ *                   items:
+ *                     type: string
  */
 
-router.get('/api/indicador', IndicatorController);
+router.get('/api/matriculas', EnrollmentController);
 
 export default router;
