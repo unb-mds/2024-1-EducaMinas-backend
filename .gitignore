@@ -11,3 +11,15 @@ WebScrapper/test_supabase.py
 WebScrapper/BeautifulSoup.py
 WebScrapper/Selenium.ipynb
 WebScrapper/DataETL/models/__pycache__/*
+
+node_modules
+
+# testing
+/coverage
+
+/build
+
+/dist
+
+.env
+.vercel

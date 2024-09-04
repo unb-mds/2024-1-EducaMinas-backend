@@ -1,0 +1,24 @@
+import { Request, Response } from 'express';
+import { MatriculasRepositoryPSQL } from '../database/psql/matriculasRepositoryPSQL';
+import { MatriculasService } from '../services/matriculasServices';
+
+export const EnrollmentController = async (req: Request, res: Response) => {
+  try {
+    const { municipio, etapa } = req.query;
+
+    if (typeof municipio !== 'string' || typeof etapa !== 'string') {
+      return res.status(400).json({ message: 'Município ou Etapa inválidos.' });
+    }
+    if (!municipio || !etapa) {
+      return res.status(400).json({ message: 'Municipio e Etapa são obrigatórios.' });
+    }
+
+    const service = new MatriculasService(new MatriculasRepositoryPSQL());
+    const result = await service.execute({ municipio, etapa });
+
+    res.json(result);
+  } catch (error) {
+    console.error('Erro ao processar a solicitação:', error);
+    res.status(400).json({ message: (error as any).message });
+  }
+};
