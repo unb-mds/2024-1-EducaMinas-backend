@@ -1,3 +1,17 @@
+WebScrapper/oracle_data/*
+WebScrapper/indicators_data/*
+WebScrapper/test_supabase
+WebScrapper/DataETL/.env*
+WebScrapper/Selenium.ipynb
+WebScrapper/BeautifulSoup.py
+WebScrapper/DataETL/__pycache__/*
+WebScrapper/DataETL/src/__pycache__/*
+WebScrapper/DataScraper/__pycache__/*
+WebScrapper/test_supabase.py
+WebScrapper/BeautifulSoup.py
+WebScrapper/Selenium.ipynb
+WebScrapper/DataETL/models/__pycache__/*
+
 node_modules
 
 # testing
